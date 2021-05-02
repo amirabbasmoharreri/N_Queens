@@ -17,11 +17,10 @@ class Coromozom():
         self.threat = value
 
 
-def population(n):
+def population(n, populationSize):
     p = []
-    num = n * 5
     counterpop = 0
-    while counterpop < num:
+    while counterpop < populationSize:
         history = []
         counter = 0
         while counter < n:
@@ -78,18 +77,16 @@ def parentSelection(allpop, rate):
     while i < 2:
         fmparent = []
         counter = 0
-        while counter < crosssize:
+        while counter < (int(crosssize/2)):
             num = randint(0, popsize - 1)
-            if not (num in history):
-                history.append(num)
-                fmparent.append(num)
-                counter += 1
+            fmparent.append(num)
+            counter += 1
         parents.append(fmparent)
         i += 1
     j = 0
     while j < 2:
         c = []
-        for i in range(0, crosssize):
+        for i in range(0, (int(crosssize/2))):
             c.append(allpop[parents[j][i]])
         p.append(c)
         j += 1
@@ -100,7 +97,7 @@ def parentSelection(allpop, rate):
 def surviveSelection(allpop, n):
     allpop.sort(key=operator.attrgetter('threat'))
     num = n * 5
-    percent = (50 / 100)
+    percent = (20 / 100)
     popsize = int(len(allpop) * percent)
     best = allpop[0:popsize + 1]
     while len(best) < num:
@@ -298,6 +295,8 @@ for j in range(num):
     x = randint(0, num - 1)
     list_ministers.append(x)
 
+print("input the population")
+populationSize = int(input())
 
 print("input mutation rates")
 mutationRate = int(input())
@@ -314,7 +313,7 @@ i = 0
 j = 0
 fit1 = 100
 fit2 = 200
-allPopulation = population(num)
+allPopulation = population(num, populationSize)
 allPopulation = fitnessFunction(allPopulation)
 bestfitness.append(allPopulation[0].threat)
 evaluate = abs(fit1 - fit2)
@@ -329,7 +328,7 @@ while not(fit2 == 0):
     childs = mutation(childs, mutationRate)
     childs = fitnessFunction(childs)
     allPopulation = addchildstopopulation(allPopulation, childs)
-    allPopulation = surviveSelection(allPopulation, num)
+    allPopulation = surviveSelection(allPopulation, populationSize)
     bestcrom.append(allPopulation[0])
     bestfitness.append(allPopulation[0].threat)
     fit2 = bestfitness[len(bestfitness) - 1]
