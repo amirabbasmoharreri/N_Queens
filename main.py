@@ -96,7 +96,7 @@ def parentSelection(allpop, rate):
 
 def surviveSelection(allpop, n):
     allpop.sort(key=operator.attrgetter('threat'))
-    num = n * 5
+    num = n
     percent = (20 / 100)
     popsize = int(len(allpop) * percent)
     best = allpop[0:popsize + 1]
