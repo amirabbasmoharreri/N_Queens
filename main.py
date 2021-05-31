@@ -336,6 +336,7 @@ while not(fit2 == 0):
         fit1 = bestfitness[len(bestfitness) - 2]
     evaluate = abs(fit1 - fit2)
     i += 1
+
 bestcrom.sort(key=operator.attrgetter('threat'))
 showChessBoard(bestcrom[0].array)
 showfitness(bestfitness)
