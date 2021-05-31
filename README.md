@@ -1,4 +1,4 @@
-# EightMinisters
+# N_Queens
 solving n-Queen problem with genetic algorithm (ADT)<br/>
 Mutation --> swaping mutation<br/>
 Crossover --> two point crossover<br/>
