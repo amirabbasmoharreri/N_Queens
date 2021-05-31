@@ -1,5 +1,5 @@
 # N_Queens
-solving n-Queen problem with genetic algorithm (ADT)<br/>
+solving n-Queens problem with genetic algorithm (ADT)<br/>
 Mutation --> swaping mutation<br/>
 Crossover --> two point crossover<br/>
 FitnessFunction --> sum total threat <br/>
